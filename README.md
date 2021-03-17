@@ -37,7 +37,7 @@ An example Django application demonstrating how to use the [WorkOS Python SDK](h
 
 4. Install the cloned app's dependencies.
    ```bash
-   pip install -r requirements.txt
+   (env) $ pip install -r requirements.txt
    ```
 
 --- LEFT OFF HERE ---
@@ -52,7 +52,7 @@ An example Django application demonstrating how to use the [WorkOS Python SDK](h
 1. Naviagte to the `python-django-sso-example` directory, which contains the `manage.py` file. Use the following command to run the app locally:
 
    ```bash
-   $ python3 manage.py runserver
+   (env) $ python3 manage.py runserver
    ```
 
 Once running, navigate to the following URL for a demonstration on the SSO workflow: http://localhost:8000.
