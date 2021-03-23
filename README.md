@@ -95,7 +95,7 @@ An example Django application demonstrating how to use the [WorkOS Python SDK](h
 
 ## SSO Setup with WorkOS
 
-1. Follow the [SSO authentication flow instructions](https://workos.com/docs/sso/guide/introduction) to set up an SSO connection. If you get stuck, reach out to us at support@workos.com so we can help. The redirect URL for the example app will be http://localhost:8000/auth/callback.
+Follow the [SSO authentication flow instructions](https://workos.com/docs/sso/guide/introduction) to set up an SSO connection. If you get stuck, reach out to us at support@workos.com so we can help. The redirect URL for the example app will be http://localhost:8000/auth/callback.
 
 ## Testing the Integration
 
