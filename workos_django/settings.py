@@ -24,7 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '-^6krj_h=p8(ldw_@)2l1r7bk#bq9tg1$x*o5@#)0dl7-x_2nb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+
+# You can use DEBUG=True for local development, but you must use DEBUG=False
+# in order to test the full authentication flow with the WorkOS API.
+# DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
