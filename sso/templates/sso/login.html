@@ -1,6 +1,7 @@
+{% load static %}
 <html>
     <head>
-        <link rel="stylesheet" href="sso/login.css">
+        <link rel="stylesheet" href="{% static 'css/login.css' %}">
     </head>
     <body class="container">
         <a class="button" href="{% url 'auth' %}">Login</a>
