@@ -7,7 +7,7 @@ An example Django application demonstrating how to use the [WorkOS Python SDK](h
 
 ## Django Project Setup
 
-1. Navigate to the directory into which you want to clone this git repo.
+1. In your CLI, navigate to the directory into which you want to clone this git repo.
    ```bash
    $ cd ~/Desktop/
    ```
@@ -34,6 +34,7 @@ An example Django application demonstrating how to use the [WorkOS Python SDK](h
    ```bash
    $ python3 -m venv env
    $ source env/bin/activate
+   (env) $
    ```
 
 5. Install the cloned app's dependencies.
@@ -45,7 +46,7 @@ An example Django application demonstrating how to use the [WorkOS Python SDK](h
    - Your [WorkOS API key](https://dashboard.workos.com/api-keys)
    - Your [SSO-specific, WorkOS Project ID](https://dashboard.workos.com/sso/configuration)
 
-7. Ensure you're in the root directory for the example app, `python-django-sso-example/`. Create a `.env` file to securely store the environment variables. Open this file with the Nano text editor.
+7. Ensure you're in the root directory for the example app, `python-django-sso-example/`. Create a `.env` file to securely store the environment variables. Open this file with the Nano text editor. (This file is listed in this repo's `.gitignore` file, so your sensitive information will not be checked into version control.)
    ```bash
    (env) $ touch .env
    (env) $ nano .env
@@ -70,7 +71,24 @@ An example Django application demonstrating how to use the [WorkOS Python SDK](h
    (env) $ echo $WORKOS_PROJECT_ID
    ```
 
-10. The final setup step is to start the server. Again, ensure you're in the `python-django-sso-example/` directory where the `manange.py` file is.
+10. Run the Django migrations. Again, ensure you're in the `python-django-sso-example/` directory where the `manange.py` file is.
+   ```bash
+   (env) $ python3 manage.py migrate
+   ```
+
+   You should see output like:
+   ```bash
+   Operations to perform:
+   Apply all migrations: admin, auth, contenttypes, sessions
+   Running migrations:
+   Applying contenttypes.0001_initial... OK
+   Applying auth.0001_initial... OK
+   . . .
+   ```
+
+11. In `python-django-sso-example/sso/views.py` change the `CUSTOMER_EMAIL_DOMAIN` string value to an email domain that makes sense for your testing purposes if the default `gmail.com` isn't relevant.
+
+12. The final setup step is to start the server.
    ```bash
    (env) $ python3 manage.py runserver
    ```
@@ -88,18 +106,22 @@ An example Django application demonstrating how to use the [WorkOS Python SDK](h
    Quit the server with CONTROL-C.
    ```
 
-   Navigate to `localhost:8000`. You should see a "Login" link. If you click on this link, you'll be redirected to an HTTP `404` page because we haven't set up SSO yet!
+   Navigate to `localhost:8000` in your web browser. You should see a "Login" link. If you click this link, you'll be redirected to an HTTP `404` page because we haven't set up SSO yet!
 
    You can stop the local Django server for now by entering `CTRL + c` on the command line.
 
 
 ## SSO Setup with WorkOS
 
-Follow the [SSO authentication flow instructions](https://workos.com/docs/sso/guide/introduction) to set up an SSO connection. If you get stuck, reach out to us at support@workos.com so we can help. The redirect URL for the example app will be http://localhost:8000/auth/callback.
+Follow the [SSO authentication flow instructions](https://workos.com/docs/sso/guide/introduction) to set up an SSO connection.
+
+When you get to the step where you provide the `REDIRECT_URI` value, use http://localhost:8000/auth/callback.
+
+If you get stuck, please reach out to us at support@workos.com so we can help.
 
 ## Testing the Integration
 
-1. Naviagte to the `python-django-sso-example` directory, which contains the `manage.py` file. Source the virtual environment we created earlier. Start the Django server locally.
+1. Naviagte to the `python-django-sso-example` directory, which contains the `manage.py` file. Source the virtual environment we created earlier, if it isn't still activated from the steps above. Start the Django server locally.
 
    ```bash
    $ cd ~/Desktop/python-django-sso-example/
