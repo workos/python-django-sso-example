@@ -23,11 +23,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '-^6krj_h=p8(ldw_@)2l1r7bk#bq9tg1$x*o5@#)0dl7-x_2nb'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+'''
+SECURITY WARNING: don't run with DEBUG=True in production!
+You can use DEBUG=True for local development, but you must use DEBUG=False
+in order to test the full authentication flow with the WorkOS API.
 
-# You can use DEBUG=True for local development, but you must use DEBUG=False
-# in order to test the full authentication flow with the WorkOS API.
+The CSS file will not be served when DEBUG=False.
+The CSS file will only be served when DEBUG=True. See
+https://docs.djangoproject.com/en/3.1/howto/static-files/#configuring-static-files
+'''
+DEBUG = False
 # DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
