@@ -3,6 +3,7 @@ import os
 import workos
 
 from django.conf import settings
+from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
 
@@ -33,7 +34,8 @@ def auth(request):
 
 
 def auth_callback(request):
-    code = request.args.get('code')
-    profile = client.sso.get_profile(code)
+    code = request.GET['code']
+    profile = workos.client.sso.get_profile(code)
+    profile = profile.to_dict()
 
-    return profile.to_dict()
+    return JsonResponse(data=profile)
