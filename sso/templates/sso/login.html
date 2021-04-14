@@ -4,6 +4,10 @@
         <link rel="stylesheet" href="{% static 'css/login.css' %}">
     </head>
     <body class="container">
-        <a class="button" href="{% url 'auth' %}">Login</a>
+      <form action="{% url 'auth' %}">
+        <label for="domain">Enter an email domain to test its SSO connection:</label><br><br>
+        <input type="text" id="domain" name="domain"><br><br>
+        <input type="submit" value="Login" class="button">
+      </form>
     </body>
 </html>

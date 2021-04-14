@@ -23,7 +23,7 @@ def login(request):
 
 def auth(request):
 
-    CUSTOMER_EMAIL_DOMAIN = 'gmail.com'  # Change this to match your email domain
+    CUSTOMER_EMAIL_DOMAIN = request.GET['domain']
     REDIRECT_URI = os.getenv('REDIRECT_URI')
     authorization_url = workos.client.sso.get_authorization_url(
         CUSTOMER_EMAIL_DOMAIN,
