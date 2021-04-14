@@ -45,6 +45,7 @@ An example Django application demonstrating how to use the [WorkOS Python SDK](h
 6. Obtain and make note of the following values. In the next step, these will be set as environment variables.
    - Your [WorkOS API key](https://dashboard.workos.com/api-keys)
    - Your [SSO-specific, WorkOS Project ID](https://dashboard.workos.com/sso/configuration)
+   - The redirect URI. For this example, we'll use http://localhost:8000/auth/callback
 
 7. Ensure you're in the root directory for the example app, `python-django-sso-example/`. Create a `.env` file to securely store the environment variables. Open this file with the Nano text editor. (This file is listed in this repo's `.gitignore` file, so your sensitive information will not be checked into version control.)
    ```bash
@@ -56,6 +57,7 @@ An example Django application demonstrating how to use the [WorkOS Python SDK](h
    ```bash
    export WORKOS_API_KEY=<value found in step 6>
    export WORKOS_PROJECT_ID=<value found in step 6>
+   export REDIRECT_URI='http://localhost:8000/auth/callback'
    ```
 
    To exit the Nano text editor, type `CTRL + x`. When prompted to "Save modified buffer", type `Y`, then press the `Enter` or `Return` key.
@@ -69,6 +71,7 @@ An example Django application demonstrating how to use the [WorkOS Python SDK](h
    ```bash
    (env) $ echo $WORKOS_API_KEY
    (env) $ echo $WORKOS_PROJECT_ID
+   (env) $ echo $REDIRECT_URI
    ```
 
 10. Run the Django migrations. Again, ensure you're in the `python-django-sso-example/` directory where the `manange.py` file is.

@@ -24,7 +24,7 @@ def login(request):
 def auth(request):
 
     CUSTOMER_EMAIL_DOMAIN = 'gmail.com'  # Change this to match your email domain
-    REDIRECT_URI = 'http://localhost:8000/auth/callback'
+    REDIRECT_URI = os.getenv('REDIRECT_URI')
     authorization_url = workos.client.sso.get_authorization_url(
         CUSTOMER_EMAIL_DOMAIN,
         REDIRECT_URI,
