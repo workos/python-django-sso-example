@@ -56,7 +56,7 @@ An example Django application demonstrating how to use the [WorkOS Python SDK](h
 8. Once the Nano text editor opens, you can directly edit the `.env` file by listing the environment variables:
    ```bash
    export WORKOS_API_KEY=<value found in step 6>
-   export WORKOS_PROJECT_ID=<value found in step 6>
+   export WORKOS_CLIENT_ID=<value found in step 6>
    export REDIRECT_URI='http://localhost:8000/auth/callback'
    ```
 
@@ -70,7 +70,7 @@ An example Django application demonstrating how to use the [WorkOS Python SDK](h
    You can ensure the environment variables were set correctly by running the following commands. The output should match the corresponding values.
    ```bash
    (env) $ echo $WORKOS_API_KEY
-   (env) $ echo $WORKOS_PROJECT_ID
+   (env) $ echo $WORKOS_CLIENT_ID
    (env) $ echo $REDIRECT_URI
    ```
 
