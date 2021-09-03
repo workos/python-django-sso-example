@@ -1,11 +1,7 @@
 import os
-
 import workos
-
 from django.conf import settings
-from django.http import JsonResponse
 from django.shortcuts import redirect, render
-from django.urls import reverse
 
 
 workos.api_key = os.getenv('WORKOS_API_KEY')
@@ -22,6 +18,7 @@ workos.base_api_url = 'http://localhost:8000/' if settings.DEBUG else workos.bas
 CUSTOMER_EMAIL_DOMAIN = 'gmail.com'
 CONNECTION_ID = ''
 REDIRECT_URI = os.getenv('REDIRECT_URI')
+
 
 def login(request):
     return render(request, 'sso/login.html')
@@ -41,6 +38,20 @@ def auth(request):
 def auth_callback(request):
     code = request.GET['code']
     profile = workos.client.sso.get_profile_and_token(code)
-    profile = profile.to_dict()
+    p_profile = profile.to_dict()
+    print(p_profile)
+    first_name = p_profile['profile']['first_name']
 
-    return JsonResponse(data=profile)
+    if "picture" in p_profile['profile']['raw_attributes']:
+        image = p_profile['profile']['raw_attributes']['picture']
+    else: 
+        image = "../static/images/workos_logo.png"
+
+    raw_profile = p_profile['profile']
+
+    return render(request, 'sso/login_successful.html', {
+        "p_profile": p_profile,
+        "first_name": first_name,
+        "image": image,
+        "raw_profile": raw_profile
+    })
